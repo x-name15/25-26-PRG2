@@ -2,12 +2,16 @@ import java.util.Scanner;
 
 public class GestorTareas {
     private static final int MAX_TAREAS = 10;
+    private static Scanner sc;
+    private static String[] tareas;
+    private static boolean[] completadas;
+    private static int numTareas;
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String[] tareas = new String[MAX_TAREAS];
-        boolean[] completadas = new boolean[MAX_TAREAS];
-        int numTareas = 0;
+        sc = new Scanner(System.in);
+        tareas = new String[MAX_TAREAS];
+        completadas = new boolean[MAX_TAREAS];
+        numTareas = 0;
 
         System.out.println("Gestor de Tareas v1.0");
 
