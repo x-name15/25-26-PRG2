@@ -7,6 +7,20 @@ public class GestorTareas {
     private static boolean[] completadas;
     private static int numTareas;
 
+    //Dividire las funciones para mejorar la legibilidad
+    private static void anadirTarea() {
+        if (numTareas < MAX_TAREAS) {
+            System.out.print("Descripcion de la nueva tarea: ");
+            String descripcion = sc.nextLine();
+            tareas[numTareas] = descripcion;
+            completadas[numTareas] = false;
+            numTareas++;
+            System.out.println("Tarea anadida correctamente.");
+        } else {
+            System.out.println("ERROR: No se pueden anadir mas tareas, limite alcanzado.");
+        }
+    }
+
     public static void main(String[] args) {
         sc = new Scanner(System.in);
         tareas = new String[MAX_TAREAS];
@@ -26,16 +40,7 @@ public class GestorTareas {
             sc.nextLine();
 
             if (opcion == 1) {
-                if (numTareas < MAX_TAREAS) {
-                    System.out.print("Descripcion de la nueva tarea: ");
-                    String d = sc.nextLine();
-                    tareas[numTareas] = d;
-                    completadas[numTareas] = false;
-                    numTareas++; // El contador se incrementa
-                    System.out.println("Tarea anadida correctamente.");
-                } else {
-                    System.out.println("ERROR: No se pueden anadir mas tareas, limite alcanzado.");
-                }
+                anadirTarea();
             } else if (opcion == 2) {
                 System.out.println("Tareas para Marcar");
                 for (int i = 0; i < numTareas; i++) {
