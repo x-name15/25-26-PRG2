@@ -21,6 +21,29 @@ public class GestorTareas {
         }
     }
 
+    private static void marcarCompletada() {
+        System.out.println("Tareas para Marcar");
+        for (int i = 0; i < numTareas; i++) {
+            System.out.println((i + 1) + ". " + tareas[i] + " [" + (completadas[i] ? "Completada" : "Pendiente") + "]");
+        }
+        if (numTareas > 0) {
+            System.out.print("Numero de tarea a marcar como completada: ");
+            int num = sc.nextInt();
+            if (num >= 1 && num <= numTareas) {
+                if (!completadas[num - 1]) {
+                    completadas[num - 1] = true;
+                    System.out.println("Tarea marcada como completada.");
+                } else {
+                    System.out.println("Esta tarea ya estaba completada.");
+                }
+            } else {
+                System.out.println("Numero de tarea invalido.");
+            }
+        } else {
+            System.out.println("No hay tareas para marcar.");
+        }
+    }
+
     public static void main(String[] args) {
         sc = new Scanner(System.in);
         tareas = new String[MAX_TAREAS];
@@ -42,26 +65,7 @@ public class GestorTareas {
             if (opcion == 1) {
                 anadirTarea();
             } else if (opcion == 2) {
-                System.out.println("Tareas para Marcar");
-                for (int i = 0; i < numTareas; i++) {
-                    System.out.println((i + 1) + ". " + tareas[i] + " [" + (completadas[i] ? "Completada" : "Pendiente") + "]");
-                }
-                if (numTareas > 0) {
-                    System.out.print("Numero de tarea a marcar como completada: ");
-                    int num = sc.nextInt();
-                    if (num >= 1 && num <= numTareas) {
-                        if (!completadas[num - 1]) {
-                            completadas[num - 1] = true;
-                            System.out.println("Tarea marcada como completada.");
-                        } else {
-                            System.out.println("Esta tarea ya estaba completada.");
-                        }
-                    } else {
-                        System.out.println("Numero de tarea invalido.");
-                    }
-                } else {
-                    System.out.println("No hay tareas para marcar.");
-                }
+                marcarCompletada();
             } else if (opcion == 3) {
                 System.out.println("Tareas Pendientes");
                 boolean hayPendientes = false;
