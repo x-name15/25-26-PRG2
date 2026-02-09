@@ -13,7 +13,7 @@ Utilizar una **pila (Stack)** para almacenar los estados previos del editor:
 import java.util.Stack;
 
 private static Stack<EstadoEditor> historial = new Stack<>();
-private static final int MAX_HISTORIAL = 20; // límite opcional
+private static final int MAX_HISTORIAL = 20; 
 ```
 
 Crear una clase interna para guardar cada estado:
@@ -24,7 +24,6 @@ static class EstadoEditor {
     int lineaActiva;
     
     EstadoEditor(String[] lineas, int lineaActiva) {
-        // Hacer copia profunda del array para evitar referencias
         this.lineas = new String[lineas.length];
         for (int i = 0; i < lineas.length; i++) {
             this.lineas[i] = lineas[i];
@@ -53,7 +52,7 @@ static class EstadoEditor {
 3. **Control de límite** (opcional):
    ```java
    if (historial.size() >= MAX_HISTORIAL) {
-       historial.remove(0); // eliminar el más antiguo
+       historial.remove(0); 
    }
    ```
 
