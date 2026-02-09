@@ -13,7 +13,7 @@ public class main {
         boolean salir = false;
         while (!salir) {
             mostrarEditor();
-            System.out.print("Comandos: [L]inea activa | [E]ditar | [B]orrar | [S]alir\n> ");
+            System.out.print("Comandos: [L]inea activa | [E]ditar | [I]ntercambiar | [B]orrar | [S]alir\n> ");
             
             String comando = sc.nextLine().toUpperCase();
             
@@ -23,6 +23,9 @@ public class main {
                     break;
                 case "E":
                     editarLinea(sc);
+                    break;
+                case "I":
+                    intercambiarLineas(sc);
                     break;
                 case "B":
                     borrarLinea();
@@ -87,5 +90,31 @@ public class main {
     private static void borrarLinea() {
         lineas[lineaActiva] = "";
         System.out.println("Contenido de la linea " + lineaActiva + " borrado.");
+    }
+    
+    private static void intercambiarLineas(Scanner sc) {
+        System.out.print("Ingrese la primera linea (0-9): ");
+        try {
+            int linea1 = Integer.parseInt(sc.nextLine());
+            if (linea1 < 0 || linea1 >= MAX_LINEAS) {
+                System.out.println("Numero de linea invalido. Debe ser entre 0 y 9.");
+                return;
+            }
+            
+            System.out.print("Ingrese la segunda linea (0-9): ");
+            int linea2 = Integer.parseInt(sc.nextLine());
+            if (linea2 < 0 || linea2 >= MAX_LINEAS) {
+                System.out.println("Numero de linea invalido. Debe ser entre 0 y 9.");
+                return;
+            }
+
+            String temp = lineas[linea1];
+            lineas[linea1] = lineas[linea2];
+            lineas[linea2] = temp;
+            
+            System.out.println("Lineas " + linea1 + " y " + linea2 + " intercambiadas correctamente.");
+        } catch (NumberFormatException e) {
+            System.out.println("Entrada invalida. Ingrese un numero.");
+        }
     }
 }
