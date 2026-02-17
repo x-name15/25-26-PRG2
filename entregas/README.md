@@ -1,37 +1,86 @@
-# Carpeta de entregas
+# Reto 003
 
-Para cada entrega, cree en esta carpeta su carpeta personal usando el estándar `apellidoNombre`.
+## Refactoring, corrección de errores y/o reescritura
 
-## Estructura
+Dado el código a continuación, que puede contener errores funcionales además de malas prácticas, el objetivo es obtener una versión correcta y limpia del mismo.
+
+### Códigos
+
+- [Examen de minas](ExamenMina.java)
+- [Buscaminas](buscaminas.java)
+
+### Opciones de trabajo
+
+Puede abordar este reto de dos formas:
+
+1. **Refactorización incremental**: Modificar el código existente mediante *baby steps*, aplicando una corrección por commit.
+1. **Reescritura desde cero**: Partir de la funcionalidad deseada y escribir un nuevo código limpio, documentando cada decisión de diseño.
+
+### Entregables
+
+El trabajo debe construirse **a partir de** la rama `entregas` de este repo, y **enviarse a** la rama reto-003 en este mismo repo.
+
+- [ ] **Código refactorizado/corregido** o **nueva versión**
+- [ ] **Historial de commits** visible. Cada commit debe representar un cambio lógico:
+  - Si refactoriza: una mejora por commit
+  - Si reescribe: cada feature/decisión de diseño por commit
+- Este historial de commit, bien hecho, se convierte en:
+  - [ ] Documento con las **malas prácticas identificadas** y **errores detectados** en el código original
+  - [ ] Breve **memoria** justificando los cambios realizados o las decisiones de diseño
+
+### Nota
+
+A diferencia del reto 001, estos códigos pueden contener errores funcionales que deben ser corregidos además de las malas prácticas de estilo y diseño.
+
+## Enunciado original
+
+Desarrolle la siguiente versión del juego de buscaminas:
+
+Cree un tablero de 5 filas x 7 columnas y asigne cinco minas (de modo aleatorio) sobre su superficie.
+
+El jugador indica las posiciones X e Y y el programa determina si hay una mina en esa casilla. 
+
+- Si no hay mina, el tablero muestra un punto. 
+- En caso de haber una mina,  se muestra un asterisco y se suma una explosión.
+
+El juego finaliza al liberar todas las casillas (en  cuyo caso gana) o bien cuando al jugador le explotan tres minas (donde lógicamente pierde).
 
 ```
-/entregas/apellidoNombre/README.md   <-- Presentación de la entrega
-                        /src         <-- Código fuente
-                        /modelosUML  <-- Modelos en plantUML
-                        /docs        <-- Documentación adicional
-                        /images      <-- Imágenes, diagramas...
+================
+  1 2 3 4 5 6 7
+1 - - - - - - - 
+2 - - - - - - -
+3 - - - - - - -
+4 - - - - - - -
+5 - - - - - - -
+================
+Ingrese X
+2
+Ingrese Y
+2
+----------------
+Libre!
+================
+  1 2 3 4 5 6 7
+1 - - - - - - - 
+2 - . - - - - -
+3 - - - - - - -
+4 - - - - - - -
+5 - - - - - - -
+================
+Ingrese X
+1
+Ingrese Y
+5
+----------------
+Mina!
+================
+  1 2 3 4 5 6 7
+1 - - - - * - - 
+2 - . - - - - -
+3 - - - - - - -
+4 - - - - - - -
+5 - - - - - - -
+================
+Ingrese X
 ```
-
-## Artefactos habituales
-
-||||
-|-|-|-|
-|1|**README.md**|Presentación de la entrega, con explicación de la solución y referencias al resto de artefactos. ¡Navegabilidad!|
-|2|**Código fuente**|Proyecto ordenado dentro de `/src`.|
-|3|**Diagramas**|Fuente en `/modelosUML`, exportado en `/images`, referenciado en los .md pertinentes.|
-|4|**Documentación adicional**|En `/docs`, en formato markdown (u otro formato, solo si se solicita explícitamente).|
-
-> Cada reto indicará qué artefactos son obligatorios y cuáles opcionales.
-
-## Criterios de valoración
-
-- **Proceso de creación** — commits bien descritos, un cambio por commit.
-- **Código limpio** — innegociable.
-- **Adecuado reparto de responsabilidades** entre módulos.
-- **Aplicación de lo visto en la vida, en el grado, en la asignatura y en las clases**, en ese orden.
-
-## Tenga en cuenta
-
-- **Planificar** antes de codificar (diagramas, esquemas, pseudocódigo).
-- **Construir código que se autoexplique**.
-- **Usar los commits** para documentar el proceso.
