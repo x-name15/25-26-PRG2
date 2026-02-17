@@ -2,6 +2,12 @@ import java.util.Scanner;
 
 public class ExamenMina{
 
+	static final int ROWS = 5;
+	static final int COLS = 7;
+	static final int TOTAL_MINES = 5;
+	static final int MAX_MINES_TO_LOSE = 3;
+	static final int CELLS_TO_WIN = ROWS * COLS - TOTAL_MINES;
+
 	static String[][] displayBoard = 	
 		{
 			{" ",	"1", 	"2", 	"3", 	"4",	"5",	"6", 	"7"},
@@ -25,9 +31,9 @@ public class ExamenMina{
 	public static void main(String[] args){	
 	Scanner scanner = new Scanner(System.in);
 		int i=0;	
-		while ( i < 5){
-		int mineCol = (int)(Math.random()*7+1);
-		int mineRow = (int)(Math.random()*5+1);
+		while ( i < TOTAL_MINES){
+		int mineCol = (int)(Math.random()*COLS+1);
+		int mineRow = (int)(Math.random()*ROWS+1);
 			if (mineBoard[mineRow][mineCol].equals("1")){
 			i=i-1;
 			}
@@ -54,7 +60,7 @@ while(!validInput){
 	row = scanner.nextInt();
 	System.out.println("Ingrese Y");
 	col = scanner.nextInt();
-	if(row>5 || col>7){
+	if(row>ROWS || col>COLS){
 		System.out.println("Entrada inválida");
 	}
 	else{
@@ -71,17 +77,18 @@ while(!validInput){
 		}
 		
 		cellsRevealed++;
-		if(minesHit>2){
+		if(minesHit>MAX_MINES_TO_LOSE-1){
 			gameRunning=false;
 			System.out.println("Has perdido");
 		}
-		else if(cellsRevealed>=30){
+		else if(cellsRevealed>=CELLS_TO_WIN){
 			System.out.println("Felicidades Ganador!");
 			gameRunning=false;
-		}
 	}
+}
 }
 }	
 	
 	
+}
 }
