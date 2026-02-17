@@ -10,3 +10,4 @@ feat: rename variables to english
 refactor: replace integer flags with boolean type
 refactor: extract magic numbers to constants
 fix: close scanner
+refactor: separate concerns into internal classes
