@@ -44,7 +44,7 @@ public class ExamenMina{
 			i=i-1;
 			}
 			else {
-				mapaMinasActivas[PosXMina+1][PosYMina+1]="1";
+				mapaMinasActivas[PosXMina][PosYMina]="1";
 			}
 			i++;
 		}
