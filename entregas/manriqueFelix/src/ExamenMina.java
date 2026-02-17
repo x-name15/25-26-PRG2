@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class ExamenMina{
 
-	static String[][] mapaMinasMostrar = 	
+	static String[][] displayBoard = 	
 		{
 			{" ",	"1", 	"2", 	"3", 	"4",	"5",	"6", 	"7"},
 			{"1", 	"-", 	"-", 	"-", 	"-", 	"-", 	"-",	"-"},
@@ -12,7 +12,7 @@ public class ExamenMina{
 			{"5", 	"-", 	"-",	"-", 	"-", 	"-", 	"-",	"-"}
 		};
 		
-	static String[][] mapaMinasActivas = 	
+	static String[][] mineBoard = 	
 		{
 			{" ",	"1", 	"2", 	"3", 	"4",	"5",	"6", 	"7"},
 			{"1", 	"0", 	"0", 	"0", 	"0", 	"0", 	"0",	"0"},
@@ -23,63 +23,73 @@ public class ExamenMina{
 		};
 
 	public static void main(String[] args){	
-	Scanner scan = new Scanner(System.in);
+	Scanner scanner = new Scanner(System.in);
 		int i=0;	
 		while ( i < 5){
-		int PosYMina = (int)(Math.random()*7+1);
-		int PosXMina = (int)(Math.random()*5+1);
-			if (mapaMinasActivas[PosXMina][PosYMina].equals("1")){
+		int mineCol = (int)(Math.random()*7+1);
+		int mineRow = (int)(Math.random()*5+1);
+			if (mineBoard[mineRow][mineCol].equals("1")){
 			i=i-1;
 			}
 			else {
-				mapaMinasActivas[PosXMina][PosYMina]="1";
+				mineBoard[mineRow][mineCol]="1";
 			}
 			i++;
 		}
 	
-		int posX=0, posY=0, juegoEncendido=1, valoresCorrectos, contadorMapa=0, contadorMinas=0;
+	int row=0, col=0, gameRunning=1, validInput, cellsRevealed=0, minesHit=0;
 
-		while(juegoEncendido==1){
-			for( i = 0; i<mapaMinasMostrar.length; i++){            
-				for (int j = 0; j<mapaMinasMostrar[i].length; j++) {                                     
-					System.out.print(mapaMinasMostrar[i][j]);
+		while(gameRunning==1){
+			for( i = 0; i<displayBoard.length; i++){            
+				for (int j = 0; j<displayBoard[i].length; j++) {                                     
+					System.out.print(displayBoard[i][j]);
 				}
 				System.out.println(" ");
 			}
-			valoresCorrectos=0;
-			while(valoresCorrectos==0){
+			validInput=0;
+			while(validInput==0){
 				System.out.println(" ");
 				System.out.println("Ingrese X");
-			posX = scan.nextInt();
+			row = scanner.nextInt();
 			System.out.println("Ingrese Y");
-			posY = scan.nextInt();
-				if(posX>5){
-					valoresCorrectos=0;
+			col = scanner.nextInt();
+				if(row>5){
+					validInput=0;
 				}
-				else if(posY>7){
-					valoresCorrectos=0;
+				else if(col>7){
+					validInput=0;
 				}
 				else{
-					valoresCorrectos=1;
+					validInput=1;
 				}
 			}
 
-			if(mapaMinasActivas[posX][posY].equals("1")){
-			mapaMinasMostrar[posX][posY]="x";
-			contadorMinas++;
+			if(mineBoard[row][col].equals("1")){
+			displayBoard[row][col]="x";
+			minesHit++;
 			}
-			else if(mapaMinasActivas[posX][posY].equals("0")){
-			mapaMinasMostrar[posX][posY]=".";
+			else if(mineBoard[row][col].equals("0")){
+			displayBoard[row][col]=".";
 			}
 			else{
 			System.out.println("No es correcta esa opcion.");
 			}
 			
-			contadorMapa++;
-			if(contadorMinas>2){
-				juegoEncendido=0;
+			cellsRevealed++;
+			if(minesHit>2){
+				gameRunning=0;
 				System.out.println("Has perdido");
 			}
-		else if(contadorMapa>=30){
+		else if(cellsRevealed>=30){
 		
+}System.out.println("Felicidades Ganador!");
+gameRunning=0;
+}
+else{
+
+}
+}
+}
+
+
 }
