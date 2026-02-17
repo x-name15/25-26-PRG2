@@ -37,57 +37,50 @@ public class ExamenMina{
 			i++;
 		}
 	
-	int row=0, col=0, gameRunning=1, validInput, cellsRevealed=0, minesHit=0;
+	int row=0, col=0, cellsRevealed=0, minesHit=0;
+	boolean gameRunning=true, validInput;
 
-		while(gameRunning==1){
+	while(gameRunning){
 			for( i = 0; i<displayBoard.length; i++){            
 				for (int j = 0; j<displayBoard[i].length; j++) {                                     
 					System.out.print(displayBoard[i][j]);
 				}
 				System.out.println(" ");
 			}
-			validInput=0;
-			while(validInput==0){
-				System.out.println(" ");
-				System.out.println("Ingrese X");
-			row = scanner.nextInt();
-			System.out.println("Ingrese Y");
-			col = scanner.nextInt();
-				if(row>5){
-					validInput=0;
-				}
-				else if(col>7){
-					validInput=0;
-				}
-				else{
-					validInput=1;
-				}
-			}
-
-			if(mineBoard[row][col].equals("1")){
+validInput=false;
+while(!validInput){
+	System.out.println(" ");
+	System.out.println("Ingrese X");
+	row = scanner.nextInt();
+	System.out.println("Ingrese Y");
+	col = scanner.nextInt();
+	if(row>5 || col>7){
+		System.out.println("Entrada inválida");
+	}
+	else{
+		validInput=true;
+		if(mineBoard[row][col].equals("1")){
 			displayBoard[row][col]="x";
 			minesHit++;
-			}
-			else if(mineBoard[row][col].equals("0")){
+		}
+		else if(mineBoard[row][col].equals("0")){
 			displayBoard[row][col]=".";
-			}
-			else{
+		}
+		else{
 			System.out.println("No es correcta esa opcion.");
-			}
-			
-cellsRevealed++;
+		}
+		
+		cellsRevealed++;
 		if(minesHit>2){
-			gameRunning=0;
+			gameRunning=false;
 			System.out.println("Has perdido");
 		}
 		else if(cellsRevealed>=30){
 			System.out.println("Felicidades Ganador!");
-			gameRunning=0;
-		}
-		else{
-			
+			gameRunning=false;
 		}
 	}
+}
 }	
 	
 	

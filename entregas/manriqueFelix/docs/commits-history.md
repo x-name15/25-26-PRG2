@@ -7,3 +7,4 @@ refactor: fix loop bounds in board display to use correct array length
 refactor: fix win condition counter from 31 to 30 cells
 refactor: remove unnecessary comments from code
 feat: rename variables to english
+refactor: replace integer flags with boolean type
