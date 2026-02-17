@@ -88,7 +88,7 @@ while(!validInput){
 }
 }
 }	
-	
+	scanner.close();
 	
 }
 }
