@@ -4,3 +4,4 @@ refactor: fix random bounds to cover full 5x7 board
 refactor: fix x/y coordinate confusion in input handling
 refactor: fix array bounds in mine placement to prevent index out of bounds
 refactor: fix loop bounds in board display to use correct array length
+refactor: fix win condition counter from 31 to 30 cells

@@ -92,15 +92,6 @@ public class ExamenMina{
 				juegoEncendido=0;
 				System.out.println("Has perdido");
 			}
-			else if(contadorMapa>=31){
-				System.out.println("Felicidades Ganador!");
-				juegoEncendido=0;
-			}
-			else{
-				
-			}
-		}
-	}	
-		
+		else if(contadorMapa>=30){
 		
 }
