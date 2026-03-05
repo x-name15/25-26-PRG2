@@ -2,8 +2,8 @@ package vistas.intervalo;
 
 class Intervalo {
 
-    public Intervalo (double inicio, double fin)
-    public Intervalo (double fin)
+    public Intervalo (double inferior, double superior)
+    public Intervalo (double superior)
     public Intervalo ()
     public Intervalo (Intervalo intervalo)
 
