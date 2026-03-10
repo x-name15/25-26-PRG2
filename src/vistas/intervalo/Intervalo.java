@@ -20,7 +20,7 @@ class Intervalo {
     }
     
     public Intervalo (Intervalo intervalo) {
-        this(intervalo.inferior, intervalo.superior)
+        this(intervalo.inferior, intervalo.superior);
     }
 
     public Intervalo clone() {
@@ -108,15 +108,15 @@ class Intervalo {
             inferior = console.readDouble("Valor inferior?");
             superior = console.readDouble("Valor superior?");
             valido = superior>=inferior;
-        } while (!valido)
+        } while (!valido);
     }
 
     public Intervalo[] trocear(int trozos) {
         assert trozos > 1;
 
         Intervalo[] intervalos = new Intervalo[trozos];
-        double inferior = inferior;
-        double longitud = longitud / trozos;
+        double inferior = this.inferior;
+        double longitud = this.longitud() / trozos;
         for(int i=0; i<trozos; i++){
             intervalos[i] = new Intervalo(inferior, inferior+longitud);
             inferior = inferior + longitud;
