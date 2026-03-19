@@ -4,7 +4,7 @@
 ```
 src
   ├── publica/Fraccion.java        (INTERFAZ)
-  └── privada/FraccionImpl.java    (IMPLEMENTACIÓN)
+  └── privada/Fraccion.java    (IMPLEMENTACIÓN)
 ```
 
 ---
