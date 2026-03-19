@@ -3,60 +3,83 @@
 ## Estructura del Proyecto
 ```
 src
-  ├── Fraccion.java
-  └── PruebaFraccion.java
+  ├── publica/Fraccion.java        (INTERFAZ)
+  └── privada/FraccionImpl.java    (IMPLEMENTACIÓN)
 ```
+
+---
 
 ## Objetivo
-Entender **encapsulación**: datos privados (internos) vs interfaz pública (métodos).
----
+Entender **encapsulación** separando:
 
-## Atributos Privados
-
-**Atributos Privados:**
-```java
-private int numerador;
-private int denominador; 
-```
-
-**Razón:** Evitar valores inválidos y cambios directos sin validación.
+- **Interfaz pública** → lo que el usuario puede usar
+- **Implementación privada** → cómo funciona internamente
 
 ---
 
-## Constructores
+## Interfaz Pública (`publica/Fraccion.java`)
+
+Define SOLO los métodos accesibles:
+
 ```java
-public Fraccion(int numerador, int denominador)
-public Fraccion(int numero)       // 5 → 5/1
-public Fraccion(Fraccion f)       // Copia
-public Fraccion()                 // 0/1
+package publica;
+
+public interface Fraccion {
+
+    public Fraccion clonar();
+
+    public Fraccion dividir(Fraccion fraccion);
+    public Fraccion multiplicar(Fraccion fraccion);
+    public Fraccion sumar(Fraccion fraccion);
+
+    public void invertir();
+    public void oponer();
+}
 ```
 
-### Getters
+---
+
+## Implementación (`privada/FraccionImpl.java`)
+
+Aquí está la lógica real.
+
+### Atributos privados
 ```java
-public int getNumerador()
-public void setNumerador(int n)
-public void setDenominador(int d)  // Valida ≠ 0
-
-### Setters
-
-public Fraccion dividir(Fraccion otra)
+private double numerador;
+private double denominador;
 ```
 
-public double aDecimal()
+**Razón:** proteger los datos internos
+
+---
+
+### Constructores
+```java
+public FraccionImpl(double numerador, double denominador)
+public FraccionImpl(double racional)
+public FraccionImpl(FraccionImpl fraccion)
+```
+
+---
+
+### Métodos públicos (interfaz)
+```java
 public Fraccion clonar()
+public Fraccion dividir(Fraccion fraccion)
+public Fraccion multiplicar(Fraccion fraccion)
+public Fraccion sumar(Fraccion fraccion)
+public void invertir()
+public void oponer()
 ```
 
-### Comparaciones
+---
+
+### Método privado
 ```java
-public boolean esIgual(Fraccion otra)
-public boolean esMayor(Fraccion otra)
-public boolean esMenor(Fraccion otra)
+private double calcularMCD(double a, double b)
 ```
 
-### Object
-```java
-public String toString()
-```
+Uso interno, no accesible desde fuera
 
 ---
 
@@ -65,17 +88,15 @@ public String toString()
 | Elemento | Tipo | Razón |
 |----------|------|-------|
 | numerador | private | Proteger datos |
-| denominador | private | Evitar denominador = 0 |
-| getNumerador() | public | Lectura segura |
-| getDenominador() | public | Lectura segura |
-| setters | public | Modificación validada |
-| operaciones | public | Interfaz de trabajo |
+| denominador | private | Evitar errores |
+| métodos | public | Interfaz de uso |
+| lógica interna | private | Ocultar implementación |
 
 ---
 
 ## Principios
 
-- Datos sensibles protegidos con `private`
-- Acceso controlado mediante `public` methods
-- Validaciones en constructores y setters
-- Usuario no accede directamente a datos internos
+- Separación entre **interfaz** y **implementación**
+- Datos protegidos con `private`
+- Métodos públicos como única forma de acceso
+- El usuario trabaja con `Fraccion`, no con `FraccionImpl`
