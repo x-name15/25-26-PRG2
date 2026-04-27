@@ -29,18 +29,6 @@ La simulacion se ejecuta y se visualiza completamente en terminal.
 - Cada turno imprime el estado de la pista con caracteres de texto.
 - El resultado final tambien se imprime por terminal: gana caballo 1, gana caballo 2 o empate.
 
-Formato visual recomendado por turno:
-
-- Separador superior e inferior con guiones.
-- Una linea por caballo.
-- El caballo se representa moviendo su marca en la linea de pista.
-
-Ejemplo de enfoque para la marca visual:
-
-- Opcion minima: usar caracteres 1 y 2 para identificar caballos.
-- Opcion similar al README: usar la figura ;-;'.
-
-
 ### `Caballo`
 
 Representa a un participante de la carrera.
